@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
 })
 export class ProductsComponent {
 
-  displayedColumns: string[] = ['id', 'name', 'action'];
+  displayedColumns: string[] = ['id', 'name', 'shortDescription', 'price','discount' ,'action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;

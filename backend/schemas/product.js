@@ -8,8 +8,8 @@ const productSchema = new mongoose.Schema({
     price : Number,
     discount : Number,
     images : Array(String),
-    categoryId : {type : Schema.Types.ObjectId, ref: "categories"}, // giving reffernce of object Id from categories collection
-
+    categoryId : Array({type : Schema.Types.ObjectId, ref: "categories"}), // giving reffernce of object Id from categories collection
+    brandId :  {type : Schema.Types.ObjectId, ref: "brands"}
 
 });
 

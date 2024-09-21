@@ -22,13 +22,14 @@ export class ProductService {
     return this.http.get<any>(this.apiUrl + "/product/get/"+id);
   }
 
-  addProduct(name:string){
-    let body={"name" : name}
+  addProduct(value:any){
+    let body=value
     return this.http.post(this.apiUrl + "/product/add", body)
   }
 
-  updateProduct(name:string, id : string){
-    let body={"name" : name}
+  updateProduct(value:any, id : string){
+    let body=value;
+    console.log(body)
     return this.http.put(this.apiUrl + "/product/update/"+id, body)
   }
 

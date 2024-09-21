@@ -1,18 +1,79 @@
 <div class="flex flex-col items-center px-40 mt-10">
-    @if(isEdit){<h2 class="text-xl font-bold">Update Product</h2>}@else{<h2 class="text-xl font-bold">Add New Product</h2>}
-    <!-- <form class="shadow-sm w-96 p-4" action="">
-        <div class="flex flex-wrap">    
-            <div class="w-full gap-4">
+    @if(isEdit){<h2 class="text-xl font-bold">Update Product</h2>}@else{<h2 class="text-xl font-bold">Add New Product
+    </h2>}
+    <form class="shadow-sm w-4/6 p-4" [formGroup]="productForm">
+        <div class="flex flex-wrap">
+
+            <mat-form-field class="w-full">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="categoryId" required multiple>
+                    @for (category of categories; track category) {
+                    <mat-option [value]="category._id">{{category.name}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Brand</mat-label>
+                <mat-select formControlName="brandId" required>
+                    @for (brand of brands; track brand) {
+                    <mat-option [value]="brand._id">{{brand.name}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" formControlName="name" placeholder="enter product" required />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Short Description</mat-label>
+                <input matInput type="text" formControlName="shortDescription" placeholder="enter description"
+                    required />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Descritpion</mat-label>
+                <textarea matInput type="text" name="name" rows="5" required formControlName="description"
+                    placeholder="enter long description"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" name="name" placeholder="enter price" required formControlName="price" />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Discount</mat-label>
+                <input matInput type="number" name="name" placeholder="enter discount" required
+                    formControlName="discount" />
+            </mat-form-field>
+
+            <div class="w-full flex flex-col" formArrayName="images">
+                <div class="flex justify-between">
+                    <h4>Images</h4>
+                    <div class="gap-x-8">
+                        <button mat-raised-button color="primary" (click)="addImages()">Add Image</button>
+                        <button mat-raised-button color="primary" (click)="removeImage()">Remove Image</button>
+                    </div>
+
+                </div>
+                @for ( item of images.controls; track $index ){
                 <mat-form-field class="w-full">
-                    <mat-label>Name</mat-label>
-                    <input matInput  type="text" [(ngModel)]="name" name="name" placeholder="enter category"/>
+                    <mat-label>Image {{$index + 1}}</mat-label>
+                    <input matInput type="text" [formControlName]="$index" required />
                 </mat-form-field>
+                }
+
             </div>
+
             <div class="w-full flex justify-center">
-                <button mat-raised-button color="primary" [disabled]="!name" (click)="addCategory()" *ngIf="!isEdit">Add</button>
-                <button mat-raised-button color="primary" [disabled]="!name" (click)="addCategory()" *ngIf="isEdit">Update</button>
+                <button mat-raised-button color="primary" [disabled]="productForm.invalid" (click)="addCategory()"
+                    *ngIf="!isEdit">Add</button>
+                <button mat-raised-button color="primary" [disabled]="productForm.invalid" (click)="addCategory()"
+                    *ngIf="isEdit">Update</button>
             </div>
         </div>
-    </form> -->
+    </form>
 </div>
-

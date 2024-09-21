@@ -52,7 +52,9 @@ async function updateProduct (req,res,next){
     try{
         let data = req.body;
         let id = req.params.id;
+        console.log(data)
         const response = await productModel.findOneAndUpdate({_id:id},data)
+        console.log(response)
         if(response == null){
             const err = new Error();
             err.status = 400;
