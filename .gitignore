@@ -1,0 +1,18 @@
+ # Ignore node_modules
+node_modules/
+
+# Ignore compiled Python files
+*.pyc
+
+# Ignore environment variables and secrets
+.env
+
+# Ignore build files
+build/
+dist/
+
+# Ignore IDE specific files (for example, VSCode)
+.vscode/
+
+# Ignore logs
+*.log
